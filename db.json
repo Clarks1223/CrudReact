@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "metro": [
+    {
+      "id": "5f7223b4-2475-4a1c-a19a-86bdd8837f41",
+      "nombre": "Pablo",
+      "sector": "SanCarlos",
+      "salida": "PaqueIngles",
+      "llegada": "Quitumbe",
+      "maquinista": "Elian",
+      "detalles": "N/A"
+    },
+    {
+      "nombre": "Labrador",
+      "sector": "Norte",
+      "salida": "Quitumbe",
+      "llegada": "Labrador",
+      "maquinista": "Pablo",
+      "detalles": "NA",
+      "id": "27c9c5f1-ee25-4c8c-b0a5-69f27ac30d6f"
+    }
+  ]
+}
