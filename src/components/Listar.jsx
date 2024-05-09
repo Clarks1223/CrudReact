@@ -12,10 +12,10 @@ const Listar = ({ estado, setIdMetro }) => {
       (async function () {
         try {
           const respuesta = await (
-            await fetch('http://localhost:3000/metro')
+            await fetch('https://apimetro-production.up.railway.app/api/metro')
           ).json();
-          setRutas(respuesta);
-          console.log('Lo que llega', rutas);
+          setRutas(respuesta.data);
+          //console.log('Lo que llega ahora', respuesta.data);
         } catch (error) {
           console.log(error);
         }
@@ -32,11 +32,11 @@ const Listar = ({ estado, setIdMetro }) => {
       //si la confirmacion es positiva
       if (confirmar) {
         //realiza el fetch con el metodo delte
-        const URL = `http://localhost:3000/metro/${id}`;
-
+        const URL = `https://apimetro-production.up.railway.app/api/metro/${id}`;
+        //se realiza el fech para eliminar la ruta
         await fetch(URL, { method: 'DELETE' });
         //crea un nuevo arreglo con las rutas y saca la ruta que se elimino
-        const nuevasRutas = rutas.filter((ruta) => ruta.id !== id);
+        const nuevasRutas = rutas.filter((ruta) => ruta._id !== id);
         //guarda las rutas
         setRutas(nuevasRutas);
         //actualiza las rutas
@@ -54,7 +54,7 @@ const Listar = ({ estado, setIdMetro }) => {
       ) : (
         rutas.map((ruta) => (
           <div
-            key={ruta.id}
+            key={ruta._id}
             className="p-2 rounded-xl sm:flex gap-12 bg-gray-200 shadow-xl mb-5"
           >
             <img
@@ -77,7 +77,7 @@ const Listar = ({ estado, setIdMetro }) => {
                 <button
                   className="bg-sky-900 text-white px-6 py-1 rounded-full"
                   onClick={() => {
-                    setIdMetro(ruta.id);
+                    setIdMetro(ruta._id);
                   }}
                 >
                   Actualizar
@@ -85,7 +85,7 @@ const Listar = ({ estado, setIdMetro }) => {
                 <button
                   className="bg-red-900 text-white px-6 py-1 rounded-full"
                   onClick={() => {
-                    handleDelete(ruta.id);
+                    handleDelete(ruta._id);
                   }}
                 >
                   Eliminar

@@ -34,6 +34,24 @@
       "maquinista": "Pablo",
       "detalles": "NA",
       "id": "27c9c5f1-ee25-4c8c-b0a5-69f27ac30d6f"
+    },
+    {
+      "id": "ea30200b-cf26-4c57-9d2d-da986a65020a",
+      "nombre": "a",
+      "sector": "a",
+      "salida": "a",
+      "llegada": "a",
+      "maquinista": "a",
+      "detalles": "a"
+    },
+    {
+      "id": "8a1b3b62-e73f-4cea-a33d-6b3977dc4d5f",
+      "nombre": "B",
+      "sector": "B",
+      "salida": "B",
+      "llegada": "B",
+      "maquinista": "B",
+      "detalles": "B"
     }
   ]
 }

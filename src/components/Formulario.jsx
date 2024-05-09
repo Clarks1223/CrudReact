@@ -19,10 +19,12 @@ export const Formulario = ({ setEstado, idMetro }) => {
       (async function (idMetro) {
         try {
           const respuesta = await (
-            await fetch(`http://localhost:3000/metro/${idMetro}`)
+            await fetch(
+              `https://apimetro-production.up.railway.app/api/metro/${idMetro}`
+            )
           ).json();
-          const { id, nombre, sector, salida, llegada, maquinista, detalles } =
-            respuesta;
+          const { _id, nombre, sector, salida, llegada, maquinista, detalles } =
+            respuesta.data;
           setForm({
             ...form,
             nombre,
@@ -31,9 +33,8 @@ export const Formulario = ({ setEstado, idMetro }) => {
             llegada,
             maquinista,
             detalles,
-            id,
+            _id,
           });
-          console.log('ha llegado un elemento para actualizar: ', form);
         } catch (error) {
           console.log(error);
         }
@@ -51,8 +52,8 @@ export const Formulario = ({ setEstado, idMetro }) => {
       return;
     }
     try {
-      if (form.id) {
-        const URL = `http://localhost:3000/metro/${form.id}`;
+      if (form._id) {
+        const URL = `https://apimetro-production.up.railway.app/api/metro/${form._id}`;
         await fetch(URL, {
           method: 'PUT',
           body: JSON.stringify(form),
@@ -64,11 +65,12 @@ export const Formulario = ({ setEstado, idMetro }) => {
           setEstado(false);
           setForm({});
         }, 1000);
+        console.log('Ruta actualizada');
       } else {
         //se declara la url del API
-        const URL = 'http://localhost:3000/metro';
+        const URL = `https://apimetro-production.up.railway.app/api/metro`;
         //se asigna un identificador unico a cada formulario
-        form.id = uuidv4();
+        //form.id = uuidv4();
         //solicitud a la url con fetch
         await fetch(URL, {
           //se especifica el tipo de solicitud
@@ -205,7 +207,7 @@ export const Formulario = ({ setEstado, idMetro }) => {
         className="bg-sky-900 w-full p-3
         text-white uppercase font-bold rounded-lg
         hover:bg-red-900 cursor-pointer transition-all"
-        value={form.id ? 'Actualizar ruta' : 'Registrar ruta'}
+        value={form._id ? 'Actualizar ruta' : 'Registrar ruta'}
       />
     </form>
   );
